@@ -3,10 +3,12 @@ buildscript {
         mavenCentral()
     }
     dependencies {
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:0.6.1910'
         classpath 'com.android.tools.build:gradle:0.7.+'
     }
 }
 apply plugin: 'android'
+apply plugin: 'kotlin-android'
 
 repositories {
     mavenCentral()
@@ -22,6 +24,9 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
     buildTypes {
         release {
             runProguard false
@@ -31,5 +36,6 @@ android {
 }
 
 dependencies {
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:0.6.1910'
     compile 'com.android.support:appcompat-v7:+'
 }
